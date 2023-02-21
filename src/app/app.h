@@ -22,7 +22,7 @@ namespace locomotion {
 
 class App : public Basic3DAppWithShadows {
 public:
-    App(const char *title = "CRL Playground - Locomotion App - kinematic",
+    App(const char *title = "Digital Human A1",
         std::string iconPath = CRL_DATA_FOLDER "/crl_icon_grey.png")
         : Basic3DAppWithShadows(title, iconPath) {
         camera = TrackingCamera(5);

@@ -1,6 +1,6 @@
-# Assignment 2 - Kinematic walking controller
+# Assignment 1 - Kinematic walking controller
 
-**Hand-in:** Apr. 1, 2022, 18:00 CEST
+**Hand-in:** 16 March 2023, 14:00 CET
 
 ----
 
@@ -9,7 +9,8 @@ Leave your name, student ID, ETH email address and URL link to demo video here.
 - Name:
 - Student ID:
 - ETH Email:
-- Demo Video URL:
+- Demo Video URL (Ex.5):
+- Demo Video URL (Bonus, optional):
 
 ----
 
@@ -22,20 +23,20 @@ Let's see the figure below.
 *Figure 1: The control pipeline of kinematic walking controller: 1) trajectory planning 2) computing desired joint
 angles by IK.*
 
-We start from five trajectories: 1 for base, and other 4 for feet. We plan the trajectories given target velocity of the
-robot base (body) and a timeline of the foot contacts (i.e. *when* and *how long* does a foot contact with a ground.)
-The details of how we plan the timeline of foot contacts, and how we generate the target trajectories, are out of scope
+We start from five trajectories: one for base, and other four for feet. We plan the trajectories given a target velocity of the
+robot's base (body) and a timeline of foot contacts (i.e. *when* and *how long* does a foot contact with a ground.)
+The details of how we plan the timeline of foot contacts, and how we generate the target trajectories are out of scope
 of this assignment. But in Ex.3, we will have a sneak peek of *trajectory planning* procedure for the robot's base.
 
 Our goal is tracking all the five target trajectories at the same time. We will simplify this problem by assuming the
-robot's base (somehow...) always perfectly tracks a target base trajectory. Then, we want to find **desired joint
-angles** for each leg that allow the foot (i.e. the end effector of individual leg) to reach a target position. We can
-effectively formulate this as an IK problem. Since the robot has four legs, by solving four IK problems, we can obtain
+robot's base (somehow...) always perfectly tracks the target base trajectory. Then, we want to find **desired joint
+angles** for each leg that allow the foot (i.e. the end effector of individual leg) to reach the corresponding target position. 
+We can effectively formulate this as an IK problem. Since the robot has four legs, by solving four IK problems, we can obtain
 desired configuration of the robot.
 
 ![figure: overview2](imgs/overview2.png)
 
-*Figure 2: Don't freak out!, this is a skeletal visualization of our Dogbot. Assuming the base is at the target
+*Figure 2: Don't be frightened!, this is a skeletal visualization of our Dogbot. Assuming the base is at the target
 position, we want to find **desired joint angles** for each leg that allow the foot (i.e. the end effector of individual
 leg) to reach its corresponding target position. Note. You can render skeletal view by Main Menu > Draw options > Draw
 Skeleton.*
@@ -46,16 +47,19 @@ Once you complete this assignment you should hand in
 
 - code pushed to your github repository.
 - a short video demonstrating Ex.5 implementation. (**Upload your video to YouTube and add a link to README.md**)
+- a short video demonstrating bonus implementation. (**Upload your video to YouTube and add a link to README.md**)
 
 The grading scheme is as follows
 
-- baseline (80 %): based on your code. Each exercise is counted as 20%.
-    - Ex.1-3 will be evaluated by an auto grading system **after the deadline**. (the test sets are **not visible** to
-      you)
-- advanced (20 %): based on unit test, code and demo videos. Each exercise is counted as 10%.
-    - Ex.4 will be evaluated by an auto grading system **after the deadline**. (the test sets are **not visible** to
-      you)
-    - Ex.5 will be evaluated based on your demo video.
+- baseline (80 %): based on your code pushed to ```main``` (or ```master```) branch. Each exercise is counted as 20%.
+  - Ex.1-3 will be evaluated by an auto grading system **after the deadline**. (the test sets are **not visible** to
+    you)
+- advanced (20 %): based on your code and demo videos. Each exercise is counted as 10%.
+  - Ex.4 will be evaluated by an auto grading system **after the deadline**. (the test sets are **not visible** to
+    you)
+  - Ex.5 will be evaluated based on your code pushed to ```ex5``` branch and demo video.
+- bonus (5 %, optional): based on code pushed to ```bonus``` and demo videos. 
+  - You can get extra 5% bonus point by implementing a complex terrain. Please see [this](#bonus) for more details.   
 
 **IMPORTANT:** If your code is not built successfully, you will get **zero** point from this assignment. So make sure
 your code is built without any build/compile error. 
@@ -66,7 +70,7 @@ Please leave your questions on GitHub, so your colleagues also can join our disc
 
 ## Exercises
 
-Okay now let's do this step-by-step :)
+Okay now let's do this step-by-step :) 
 
 ### Ex.1 Forward Kinematics (baseline)
 
@@ -75,7 +79,7 @@ and the base position). Formally speaking, given a *generalized coordinates* vec
 
 ![equation: generalized coordinate](imgs/eq-q.png)
 
-which is a concatenated vector of position of robot's base, orientation of robot's base and n<sub>j</sub> joint angles,
+which is a concatenated vector of position of the robot's base, orientation of the robot's base and n<sub>j</sub> joint angles,
 we need to find a map between **q** vector and end effector position **p**<sub>EE</sub> expressed in world coordinate
 frame.
 
@@ -112,16 +116,16 @@ Once you implement ```getWorldCoordinates``` function correctly, you will see gr
 ### Ex.2-1 Inverse Kinematics - Jacobian by Finite Difference (baseline)
 
 Okay, now we can express the position of the feet as a function of joint angles. It's time to formulate an IK problem:
-we want to find a generalized coordinate vector **q**<sup>desired</sup> given end effector target position **p**<sub>
+we want to find a generalized coordinate vector **q**<sup>desired</sup> given an end effector target position **p**<sub>
 EE</sub><sup>target</sup>.
 
 ![equation: inverse kinematics](imgs/eq-ik.png)
 
-In the last assignment, we learn how to formulate the inverse kinematics problem as an optimization problem.
+In the last assignment, we learn how to formulate the inverse kinematics problem as an (unconstrained) optimization problem.
 
 ![equation: inverse kinematics as optimization](imgs/eq-ik2.png)
 
-We can solve this problem using [gradient-descent method](https://en.wikipedia.org/wiki/Gradient_descent)
+We can solve this problem by using [gradient-descent method](https://en.wikipedia.org/wiki/Gradient_descent)
 , [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization),
 or [Gauss-Newton method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Newton_algorithm). Whatever optimization method you
 choose, we need a [Jacobian matrix](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant) of the feet point.
@@ -141,7 +145,7 @@ small perturbation *h* around jth component of **q**, and compute the (i,j) comp
 - Functions:
     - ```void estimate_linear_jacobian(const P3D &p, RB *rb, Matrix &dpdq)```
 
-**Task**:
+**Task:**
 
 - Complete ```estimate_linear_jacobian``` functions that computes a Jacobian matrix of position/vector by FD.
 
@@ -171,13 +175,15 @@ q**<sup>desired</sup>.
 - Functions:
     - ```void solve(int nSteps = 10)```
 
-**Task**:
+**Task:**
 
 - Implement an IK solver based on the Gauss-Newton method.
 
 **Details:**
 
 - Use Jacobian matrix computed by `gcrr.estimate_linear_jacobian(p, rb, dpdq)` we implemented for Ex. 2-1.
+  - **IMPORTANT:** later, we implement analytic Jacobian matrix in Ex.4, but for your IK solver, please stick to 
+    numerical Jacobian computed by FD. Our auto-grading system will evaluate your IK solutions computed with numerical Jacobian.
 - I left some useful hints on the source code. Please read it carefully.
 - When you overwrite eigen matrix variable values in a single statement, you should use ```eval()``` function to prevent
   corruption. (note. this is caused by *aliasing*. See [this](https://eigen.tuxfamily.org/dox/group__TopicAliasing.html)
@@ -189,7 +195,7 @@ q**<sup>desired</sup>.
 J = J.block(0,6,3,q.size() - 6).eval();
 ```
 
-Let's see how the robot moves. Run ```locomotion``` app and press **Play** button (or just tap **SPACE** key of your
+Let's see how the robot moves. Run ```a1App``` app and press **Play** button (or just tap **SPACE** key of your
 keyboard). Do you see the robot trotting in place? Then you are on the right track!
 
 ![figure: trotting in place](imgs/trotting-in-place.gif)
@@ -203,7 +209,7 @@ speed in the main menu.
 ![figure: main menu](imgs/mainmenu.png)
 
 Oops! The base of the robot is not moving at all! Well, a robot trotting in place is already adorable enough, but this
-is not what we really want. We want to make the robot follow our input command.
+is not what we really want. We want to make the robot to follow our input command.
 
 Let's see what happens here. Although I'm giving 0.3 m/s forward speed command, the target trajectories (red for base,
 white for feet) are not updated accordingly. With a correct implementation, the trajectory should look like this:
@@ -219,7 +225,7 @@ white for feet) are not updated accordingly. With a correct implementation, the 
 - Function:
     - ```void generate(const bFrameState& startingbFrameState)```
 
-**Task**:
+**Task:**
 
 - Your task is completing ```generate``` function so that it updates future position and orientation according to our
   forward, sideways, turning speed commands.
@@ -232,8 +238,8 @@ white for feet) are not updated accordingly. With a correct implementation, the 
 Once you finish this step, you can now control the robot with your keyboard.
 
 By the way, planning the feet trajectories is a bit more tricky. I already implemented a feet trajectory planning
-strategy in our code base so that once you complete ```generate``` function, the feet trajectory is also updated by user
-commands. I will not explain more details today, but if you are interested, please read the paper, *Marc H. Raibert et
+strategy in our codebase so that once you complete ```generate``` function, the feet trajectory is also updated by user
+commands. I will not explain any more details today, but if you are interested, please read the paper, *Marc H. Raibert et
 al., Experiments in Balance with a 3D One-Legged Hopping Machine, 1984*. Although this is a very simple and
 long-standing strategy, almost every state-of-the-art legged robot still uses this simple heuristic. (Sidenote. Marc
 Raibert, who was the group leader of [Leg Laboratory, MIT](http://www.ai.mit.edu/projects/leglab/home.html), later
@@ -255,9 +261,9 @@ derive analytic Jacobian matrix, and implement this into our code.
 - Functions:
     - ```void compute_dpdq(const P3D &p, RB *rb, Matrix &dpdq)```
 
-**Test:** Compile and run `src/test-a2/test.cpp`. Test 4 should pass. Note that **passing this test does not necessarily
+**Test:** Compile and run `src/test-a1/test.cpp`. Test 4 should pass. Note that **passing this test does not necessarily
 mean you get a full point** Your implementation should give correct results for every case. We will auto-grade your
-implementation with bunch of test cases after the deadline.
+implementation with a bunch of test cases after the deadline.
 
 ### Ex.5 Uneven Terrain (advanced)
 
@@ -268,21 +274,21 @@ terrain, the easiest way is adding offset to y coordinates of each target positi
 
 ![figure: terrain](imgs/terrain.gif)
 
-You have a full freedom to choose the terrain map you want to use: you can just create a bumpy terrain by adding some
-spheres in the scene as I've done here. Or you can download a landscape mesh file in **.obj** format (there's an example
-terrain obj file in data folder). Please figure out the best strategy to implement this by your own.
+Of course, we can simulate rugged terrains but for now, we can just create a bumpy terrain by adding some
+spheres in the scene as I've done here. 
 
 **IMPORTANT:** For Ex.5, create a new git branch named ```ex5``` and push your code there while your implementation of
 Ex.1-4 still remains in main branch. If your Ex.5 implementation breaks Ex.1-4, you may not get full points from Ex.1-4.
 
-**Task**:
+**Task:**
 
-- Make the robot walk on an uneven terrain (5%)
-- Visualize your terrain in ```locomotion``` app (5%).
+- Make the robot walk on an uneven terrain (add some spheres on the terrain) (5%)
+- Visualize your terrain in ```a1App``` app (5%).
 - **Please record a video ~ 20 secs demonstrating your implementation. The robot in the video should walk on an uneven
   terrain, and your video should be visible enough to see how well your controller performs the task. Upload it to
   YouTube or any other video hosting website and add its link to on the top of this README.md.** If I cannot play or
-  access your video until the deadline, you won't get full points.
+  access your video until the deadline, you won't get full points. See [this](https://youtu.be/KD7ztx8R2nQ) for an 
+  example demo video.
 - Please adjust your camera zoom and perspective so that your robot is well visible in the video. You may not get full
   point if your robot is not clearly visible.
 
@@ -291,6 +297,37 @@ Ex.1-4 still remains in main branch. If your Ex.5 implementation breaks Ex.1-4, 
 - We want to give y-offset to IK targets. But remember, offset value for each target could be different.
 - Do not change ```double groundHeight = 0;``` in ```SimpleLocomotionTrajectoryPlanner```. This will merely give the
   same offset to every target trajectory. We want to give different offset for each individual foot and the base.
+
+### Bonus
+
+If you are already done with all exercises (and also bored), please try to implement a more complex 
+terrain loaded from a mesh file. If you manage to successfully implement this, you will get extra 5% point 
+(but your final point won't exceed 100%)
+
+**IMPORTANT:** This may require a lot of code modifications. So please create a new branch called ```bonus``` and work 
+there while keep your successful implementation of Ex.1~Ex.4 on the master (or main) branch, and implementation of Ex.5 on the ex5 branch. 
+Again, please make sure your implementation of Ex.1 ~ Ex.5 stays safe in master (or main) and ex5 branch. It's your responsibility to keep the main branch clean 
+and working.
+
+![figure: mesh terrain](imgs/meshterrain.png)
+
+**Task:**
+
+- Make the robot walk on a more complex terrain. (extra 5%)
+  - You have a full freedom to generate a complex terrain.
+  - Of course, you have to visualize the terrain.
+- **Please record a video ~ 20 secs demonstrating your implementation. The robot in the video should walk on an uneven
+  terrain, and your video should be visible enough to see how well your controller performs the task. Upload it to
+  YouTube or any other video hosting website and add its link to on the top of this README.md.** If I cannot play or
+  access your video until the deadline, you won't get full points. See [this](https://youtu.be/EYh9Po8piIM) for an
+  example demo video.
+- Please adjust your camera zoom and perspective so that your robot is well visible in the video. You may not get full
+  point if your robot is not clearly visible.
+
+**Hint:**
+
+You can download a terrain file you want to use from any internet source, but if it's hard to find one, you can use one 
+in data directory ```data/terrain/terrain.obj```
 
 ## Final Note
 

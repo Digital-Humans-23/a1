@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(locomotion)
+project(a1App)
 
 file(GLOB CRL_SOURCES #
      "*.h" #

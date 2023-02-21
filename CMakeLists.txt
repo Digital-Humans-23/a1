@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # set name of the project
-project(a2)
+project(a1)
 set(CMAKE_CXX_STANDARD 17)
 enable_testing()
 
@@ -15,7 +15,7 @@ set(CRL_DATA_FOLDER
 # options
 # -----------------------------------------------------------------------------
 
-option(CMM_BUILD_GUI "build GUI" ON)
+option(DH_BUILD_APP "build GUI app" ON)
 
 # -----------------------------------------------------------------------------
 # macro and functions

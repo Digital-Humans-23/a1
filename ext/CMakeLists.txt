@@ -34,7 +34,6 @@ add_library(nlohmann::json ALIAS nlohmann_json)
 target_include_directories(nlohmann_json INTERFACE $<BUILD_INTERFACE:${json_SOURCE_DIR}/include>)
 
 # GUI stuff below
-if(CMM_BUILD_GUI)
 message(STATUS "building CMM GUI")
 # glad
 set(OpenGL_GL_PREFERENCE GLVND)
@@ -114,5 +113,3 @@ if(NOT tinyobjloader_POPULATED)
 endif()
 add_subdirectory(${tinyobjloader_SOURCE_DIR} tinyobjloader)
 
-
-endif(CMM_BUILD_GUI)
