@@ -1,0 +1,48 @@
+{
+    /* 
+     * This is an example of vscode settings.json 
+     *
+     * Put this file into .vscode directory
+     */
+    
+    /* 
+     * cmake related options for ms-vscode.cmake-tools extension
+     *
+     * see https://vector-of-bool.github.io/docs/vscode-cmake-tools/settings.html for more details
+     */
+    
+    /* configure the project by cmake when you open vscode */
+    "cmake.configureOnOpen": true,
+    
+    /* cmake build directory */
+    "cmake.buildDirectory": "${workspaceFolder}/cmake-build-${buildType}",
+    
+    /* cmake configure arguments */
+    "cmake.configureArgs": [],
+    
+    /* cmake configure options */
+    "cmake.configureSettings": {
+    },
+
+    /*
+     * cmake-format related options for cheshirekow.cmake-format extensions
+     *
+     * see https://github.com/cheshirekow/cmake_format for more details
+     */
+    // "cmakeFormat.exePat": "${PYTHONPATH}/cmake-format",
+    
+    /*
+     * file related options 
+     */
+    
+    /* files to exclude from vscode file explorer */
+    "files.exclude": {
+        "**/CVS": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/build/**": true,
+        "**/cmake-build-**/**": true
+    }
+}

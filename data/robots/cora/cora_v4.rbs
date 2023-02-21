@@ -1,0 +1,397 @@
+
+RB
+	name base
+	mass 13.733
+	moi 0.250684593 0.254469458 0.073348887 -7.5402e-05 0.00030338 0.001918218
+	mesh robots/cora/meshes/body.obj
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0 0.02 
+	meshColor 0.300000 0.300000 0.300000
+	collisionSphere  0.080000  0.08500  0.280000 0.01
+	collisionSphere -0.080000  0.08500  0.280000 0.01
+	collisionSphere  0.080000  0.08500 -0.280000 0.01
+	collisionSphere -0.080000  0.08500 -0.280000 0.01
+/End_RB
+
+
+RB
+	#FrontRight hip
+	name hip_0
+	mass 1.1
+	moi 0.0015 0.0015 0.001 0 0 0
+
+	mesh robots/cora/meshes/hip.obj
+	meshTransformation 0.5 0.5 0.5 -0.5 0 0 -0.01750 
+	meshColor 0.300000 0.300000 0.300000
+
+	collisionSphere 0.110000  0.000000 -0.000000 0.01
+/End_RB
+
+
+RB
+	#HindRight hip
+	name hip_1
+	mass 1.1
+	moi 0.0015 0.0015 0.001 0 0 0
+
+	mesh robots/cora/meshes/hip.obj
+	meshTransformation -0.5 0.5 0.5 0.5 0 0 0.01750 
+	meshColor 0.300000 0.300000 0.300000
+
+	collisionSphere 0.110000  0.000000 -0.000000 0.01
+/End_RB
+
+
+RB
+	#FL hip
+	name hip_2
+	mass 1.1
+	moi 0.0015 0.0015 0.001 0 0 0
+
+	mesh robots/cora/meshes/hip.obj
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0 -0.01750
+	meshColor 0.300000 0.300000 0.300000
+
+	collisionSphere -0.110000  0.000000 -0.000000 0.01
+/End_RB
+
+
+RB
+	#HindLeft hip
+	name hip_3
+	mass 1.1
+	moi 0.0015 0.0015 0.001 0 0 0
+
+	mesh robots/cora/meshes/hip.obj
+	meshTransformation 0.5 0.5 -0.5 0.5 0 0 0.01750 
+	meshColor 0.300000 0.300000 0.300000
+
+	collisionSphere -0.110000  0.000000 -0.000000 0.01
+/End_RB
+
+
+RB
+	#front right
+	name thigh_0
+	mass 1.528000
+	moi 0.01 0.0015 0.01 0 0 0
+
+	mesh robots/cora/meshes/2linkleg_upper.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0.01 0
+
+	meshColor 0.500000 0.500000 0.500000
+/End_RB
+
+
+RB
+	#hind right
+	name thigh_1
+	mass 1.528000
+	moi 0.01 0.0015 0.01 0 0 0
+
+	mesh robots/cora/meshes/2linkleg_upper.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0.01 0
+
+	meshColor 0.500000 0.500000 0.500000
+/End_RB
+
+
+RB
+	#front left
+	name thigh_2
+	mass 1.528000
+	moi 0.01 0.0015 0.01 0 0 0
+
+	mesh robots/cora/meshes/2linkleg_upper.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0.01 0
+	meshColor 0.500000 0.500000 0.500000
+/End_RB
+
+
+RB
+	#hind left
+	name thigh_3
+
+	mass 1.528000
+	moi 0.01 0.0015 0.01 0 0 0
+
+	mesh robots/cora/meshes/2linkleg_upper.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 0.01 0
+
+	meshColor 0.500000 0.500000 0.500000
+/End_RB
+
+
+RB
+	#front right
+	name tibia_0
+	mass 0.241000
+	moi 0.003 0.0001 0.003 0 0 0
+
+	collisionSphere  0.000000 -0.1400  0.000000 0.0165
+	collisionSphere  0.000000 0.1500  0.000000 0.01	
+	endEffector 	0.000000 -0.1400 0.000000 0.0165
+
+	mesh robots/cora/meshes/2linkleg_lower.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 -0.076 0
+
+
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+
+RB
+	#hind right
+	name tibia_1
+	mass 0.241000
+	moi 0.003 0.0001 0.003 0 0 0
+	collisionSphere  0.000000 -0.1400  0.000000 0.0165
+	collisionSphere  0.000000 0.1500  0.000000 0.01	
+	endEffector 	0.000000 -0.1400 0.000000 0.0165
+
+	mesh robots/cora/meshes/2linkleg_lower.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 -0.076 0
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+
+RB
+	#front left
+	name tibia_2
+	mass 0.241000
+
+	moi 0.003 0.0001 0.003 0 0 0
+	collisionSphere  0.000000 -0.1400  0.000000 0.0165
+	collisionSphere  0.000000 0.1500  0.000000 0.01	
+	endEffector 	0.000000 -0.1400 0.000000 0.0165
+
+	mesh robots/cora/meshes/2linkleg_lower.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 -0.076 0
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+
+RB
+	#hind left
+	name tibia_3
+	mass 0.241000
+	moi 0.003 0.0001 0.003 0 0 0
+	collisionSphere  0.000000 -0.1400  0.000000 0.0165
+	collisionSphere  0.000000 0.1500  0.000000 0.01	
+	endEffector 	0.000000 -0.1400 0.000000 0.0165
+
+	mesh robots/cora/meshes/2linkleg_lower.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 -0.076 0
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+RB
+	name neck
+	mass 0.241000
+	moi 0.00015 0.00015 0.00015 0 0 0
+
+	mesh robots/cora/meshes/neck.obj 
+
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+RB
+	name head
+	mass 0.5
+	moi 0.001 0.001 0.001 0 0 0
+
+	mesh robots/cora/meshes/head_v2.obj 
+	meshTransformation -0.5 0.5 -0.5 -0.5 0 -0.05 0 
+
+	collisionSphere  0.03  0.05 0.12 0.01	
+	collisionSphere  -0.03  0.05 0.12 0.01	
+	collisionSphere  0.03  0.05 -0.07 0.01	
+	collisionSphere  -0.03  0.05 -0.07 0.01	
+
+	collisionSphere  0.03  -0.07 0.12 0.01	
+	collisionSphere  -0.03  -0.07 0.12 0.01	
+
+	meshColor 0.800000 0.800000 0.800000
+/End_RB
+
+
+	RBJoint
+		#front left adduction/abduction
+		name FL_AA
+		jointAxis 0.000000 0.000000 1.000000
+		defaultAngle 0.000000
+		jointLimits -0.7 0.7
+		parent base
+		child hip_0
+		jointCPos 0 0 -0.0525
+		jointPPos 0.06 0 0.175
+	/End_Joint
+
+
+	RBJoint
+		#hind left adduction/abduction
+		name HL_AA
+		jointAxis 0.000000 0.000000 1.000000
+		defaultAngle 0.000000
+		jointLimits -0.7 0.7
+		parent base
+		child hip_1
+		jointCPos 0 0 0.0525
+		jointPPos 0.06 0 -0.175
+	/End_Joint
+
+
+	RBJoint
+		#front right adduction/abduction
+		name FR_AA
+		jointAxis 0.000000 0.000000 1.000000
+		defaultAngle 0.000000
+		jointLimits -0.7 0.7
+		parent base
+		child hip_2
+		jointCPos 0 0 -0.0525
+		jointPPos -0.06 0 0.175
+	/End_Joint
+
+
+	RBJoint
+		#hind right adduction/abduction
+		name HR_AA
+		jointAxis 0.000000 0.000000 1.000000
+		defaultAngle 0.000000
+		jointLimits -0.7 0.7
+		parent base
+		child hip_3
+		jointCPos 0 0 0.0525
+		jointPPos -0.06 0 -0.175
+	/End_Joint
+
+
+	RBJoint
+		#front right flexion/extension
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle -0.5
+		jointLimits -1.5 1.5
+		name FR_FE_Hip
+		parent hip_0
+		child thigh_0
+		jointCPos 0 0.14 0
+		jointPPos 0.075 0 0.035
+	/End_Joint
+
+
+	RBJoint
+		#hind right flexion/extension	
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle -0.5
+		jointLimits -1.5 1.5
+		name hip_1_thigh_1
+		parent hip_1
+		child thigh_1
+		jointCPos 0 0.14 0
+		jointPPos 0.075 0 -0.035
+	/End_Joint
+
+
+	RBJoint
+		#front left flexion/extension	
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle -0.5
+		jointLimits -1.5 1.5
+		name hip_2_thigh_2
+		parent hip_2
+		child thigh_2
+		jointCPos 0 0.14 0
+		jointPPos -0.075 0 0.035
+	/End_Joint
+
+
+	RBJoint
+		#hind left flexion/extension	
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle -0.5
+		jointLimits -1.5 1.5
+		name hip_3_thigh_3
+		parent hip_3
+		child thigh_3
+		jointCPos 0 0.14 0
+		jointPPos -0.075 0 -0.035
+	/End_Joint
+
+
+	RBJoint
+		#front right knee
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle 1
+		jointLimits 0 2.7
+		name thigh_0_tibia_0
+		parent thigh_0
+		child tibia_0
+		jointCPos 0 0.14 0
+		jointPPos 0 -0.14 0
+	/End_Joint
+
+
+	RBJoint
+		#hind right knee
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle 1
+		jointLimits 0 2.7
+		name thigh_1_tibia_1
+		parent thigh_1
+		child tibia_1
+		jointCPos 0 0.14 0
+		jointPPos 0 -0.14 0
+	/End_Joint
+
+
+	RBJoint
+		#front left knee
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle 1
+		jointLimits 0 2.7
+		name thigh_2_tibia_2
+		parent thigh_2
+		child tibia_2
+		jointCPos 0 0.14 0
+		jointPPos 0 -0.14 0
+	/End_Joint
+
+
+	RBJoint
+		#hind left knee
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle 1
+		jointLimits 0 2.7
+		name thigh_3_tibia_3
+		parent thigh_3
+		child tibia_3
+		jointCPos 0 0.14 0
+		jointPPos 0 -0.14 0
+	/End_Joint
+
+	RBJoint
+		#neck_updown
+		jointAxis -1.000000 0.000000 0.000000
+		defaultAngle 0
+		jointLimits -1 1
+		name neck_1
+		parent base
+		child neck
+		jointCPos 0 -0.04 -0.04
+		jointPPos 0 0.074 0.294
+	/End_Joint
+
+
+	RBJoint
+		#neck_side2side
+		jointAxis 0.000000 1.000000 0.000000
+		defaultAngle 0
+		jointLimits -1 1
+		name neck_2
+		parent neck
+		child head
+		jointCPos 0 -0.04 -0.03
+		jointPPos 0 0.04 0.02
+	/End_Joint
+
+
