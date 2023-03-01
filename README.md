@@ -36,7 +36,7 @@ desired configuration of the robot.
 
 ![figure: overview2](imgs/overview2.png)
 
-*Figure 2: Don't be frightened!, this is a skeletal visualization of our Dogbot. Assuming the base is at the target
+*Figure 2: Don't be frightened! This is a skeletal visualization of our Dogbot. Assuming the base is at the target
 position, we want to find **desired joint angles** for each leg that allow the foot (i.e. the end effector of individual
 leg) to reach its corresponding target position. Note. You can render skeletal view by Main Menu > Draw options > Draw
 Skeleton.*
@@ -46,8 +46,8 @@ Skeleton.*
 Once you complete this assignment you should hand in
 
 - code pushed to your github repository.
-- a short video demonstrating Ex.5 implementation. (**Upload your video to YouTube and add a link to README.md**)
-- a short video demonstrating bonus implementation. (**Upload your video to YouTube and add a link to README.md**)
+- a short video demonstrating Ex.5 implementation: **upload your video to YouTube and add a link to README.md**
+- a short video demonstrating bonus implementation (optional): **Upload your video to YouTube and add a link to README.md**
 
 The grading scheme is as follows
 
@@ -305,7 +305,7 @@ terrain loaded from a mesh file. If you manage to successfully implement this, y
 (but your final point won't exceed 100%)
 
 **IMPORTANT:** This may require a lot of code modifications. So please create a new branch called ```bonus``` and work 
-there while keep your successful implementation of Ex.1~Ex.4 on the master (or main) branch, and implementation of Ex.5 on the ex5 branch. 
+there while keep your successful implementation of **Ex.1~Ex.4 on the master (or main) branch**, and **implementation of Ex.5 on the ex5 branch.** 
 Again, please make sure your implementation of Ex.1 ~ Ex.5 stays safe in master (or main) and ex5 branch. It's your responsibility to keep the main branch clean 
 and working.
 
